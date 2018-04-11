@@ -1,0 +1,49 @@
+
+Vagrant – We use Vagrant and Virtualbox to test our cookbook code and run our tests on our local workstations.  
+
+Test Kitchen – Test Kitchen is the tool we use to manage our Vagrant configurations, configure our environment to mirror
+Production in a meaningful way and run our tests.
+
+Chef-Zero – Chef-Zero is a lightweight local Chef Server that our testing VMs use to mimic our live Chef environment.
+
+ChefDK – The Chef Development Kit provided by Opscode bundles various Chef tools together.  The beauty of ChefDK is that it comes
+with an embedded Ruby environment and the necessary Ruby Gems required by the tools.  This is a great improvement if you’ve ever had to 
+deal with pre-ChefDK local Ruby/RVM configurations, fluctuating gem dependancies and breaking changes between tools.
+
+ ChefDK comes with chef-client, Berkshelf, Test Kitchen, ChefSpec, 
+ ,Foodcritic and more.
+ 
+ Workstation: This is where knife is installed and the administrator work from here
+ 
+ Cookbook: This is a bunch of recipes. Multiple Recipes can be grouped together to form a Cookbook. A Cookbook defines a scenario and contains everything that is required to support that scenario:
+
+Recipes, which specifies the resources to use and the order in which they are to be applied
+Attribute values
+File distributions
+Templates
+Extensions to Chef, such as libraries, definitions, and custom resources
+ 
+ Recipe:
+ Written in Ruby, a recipe provide lines to achieve a task: Install a package, Start a service, etc.A Recipe is a collection of 
+ resources that describes a particular configuration or policy. It describes everything that is required to configure part of a system. 
+ The user writes Recipes that describe how Chef manages applications and utilities (such as Apache HTTP Server, MySQL, or Hadoop) and
+ how they are to be configured.
+
+These Recipes describe a series of resources that should be in a particular state, i.e. Packages that should be installed, services 
+that should be running, or files that should be written.
+
+Recipes: A Recipe is a collection of resources that describes a particular configuration or policy. It describes everything that is required to configure part of a system. The user writes Recipes that describe how Chef manages applications and utilities (such as Apache HTTP Server, MySQL, or Hadoop) and how they are to be configured.
+
+These Recipes describe a series of resources that should be in a particular state, i.e. Packages that should be installed, services that should be running, or files that should be written.
+
+Later in the blog, I will show you how to write a Recipe to install Apache2 package on Chef Nodes by writing a ruby code in Chef Workstation.
+
+Cookbooks: Multiple Recipes can be grouped together to form a Cookbook. A Cookbook defines a scenario and contains everything that is required to support that scenario:
+
+Recipes, which specifies the resources to use and the order in which they are to be applied
+
+
+Knife utility: 
+This command line tool can be used to communicate with the central Chef Server from Workstation. Adding, removing, changing configurations of Nodes in a central Chef Server will be carried out by using this Knife utility. Using the Knife utility, Cookbooks can be uploaded to a central Chef Server and Roles, environments can also be managed. Basically, every aspect of the central Chef Server can be controlled from Workstation using Knife utility.
+
+A local Chef repository: This is the place where every configuration component of central Chef Server is stored. This Chef repository can be synchronized with the central Chef Server (again using the knife utility itself).
